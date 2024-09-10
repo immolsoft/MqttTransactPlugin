@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<?define MqttTransactPlugin_TargetDir=$(var.MqttTransactPlugin.TargetDir)?>
+	<Product Id="07072007-8916-451B-BCCF-F832DECA47B8" Name="MqttTransactPlugin" Language="1033" Version="1.0.0.0" Manufacturer="ImmolSoft S.r.l.u" UpgradeCode="7A288D3A-9EF3-4E95-9D8B-90ED65D7FEA1">
+
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+		<UIRef Id="WixUI_InstallDir" />
+
+		<Icon Id="icon.ico" SourceFile="Resources\Immolsoft_logo.ico" />
+		<Property Id="ARPPRODUCTICON" Value="icon.ico" />
+
+		<WixVariable Id="WixUIInfoIco" Value="Resources\Immolsoft_logo.ico" />
+		<WixVariable Id="WixUINewIco" Value="Resources\Immolsoft_logo.ico" />
+		<WixVariable Id="WixUIUpIco" Value="Resources\Immolsoft_logo.ico" />
+		<WixVariable Id="WixUIBannerBmp" Value="Resources\immolsoft_banner.bmp" />
+		<WixVariable Id="WixUIDialogBmp" Value="Resources\immolsoft_dialog.bmp" />
+		<WixVariable Id="WixUILicenseRtf" Value="Resources\license.rtf" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+
+		<Feature Id="ProductFeature" Title="Setup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentGroupRef Id="ProgramFilesFolder_files" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFiles64Folder">
+				<Directory Id="VideoOSDir" Name="Milestone">
+					<Directory Id="MIPPluginsDir" Name="MIPPlugins">
+						<Directory Id="INSTALLFOLDER" Name="MqttTransactPlugin">
+							<Directory Id="it" Name="it" />
+						</Directory>
+					</Directory>
+				</Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+			<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+			<Component Id="MqttTransactPlugin.dll" Guid="8ba5468a-e064-4885-9119-c5c3649312f0">
+				<File Id="MqttTransactPlugin.dll" Name="MqttTransactPlugin.dll" Source="$(var.MqttTransactPlugin_TargetDir)MqttTransactPlugin.dll" />
+			</Component>
+			<Component Id="_3rd_party_software_terms_and_conditions.txt" Guid="baa636f0-cba1-473e-8359-959c2abd5c86">
+				<File Id="_3rd_party_software_terms_and_conditions.txt" Name="3rd_party_software_terms_and_conditions.txt" Source="$(var.MqttTransactPlugin_TargetDir)3rd_party_software_terms_and_conditions.txt" />
+			</Component>
+			<Component Id="connector.def" Guid="832BFE8F-B5D0-4FE1-85C9-49FA540C937A">
+				<File Id="connector.def" Name="connector.def" Source="$(var.MqttTransactPlugin_TargetDir)connector.def" />
+			</Component>
+			<Component Id="MQTTnet.dll" Guid="ab95e3a2-b70a-48cf-b84d-885e6393d055">
+			  <File Id="MQTTnet.dll" Name="MQTTnet.dll" Source="$(var.MqttTransactPlugin_TargetDir)MQTTnet.dll" />
+			</Component>
+			<Component Id="MQTTnet.Extensions.ManagedClient.dll" Guid="96a6b5bb-8b74-4ad1-ba36-de111062570d">
+			  <File Id="MQTTnet.Extensions.ManagedClient.dll" Name="MQTTnet.Extensions.ManagedClient.dll" Source="$(var.MqttTransactPlugin_TargetDir)MQTTnet.Extensions.ManagedClient.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+	<Fragment>
+		<ComponentGroup Id="ProgramFilesFolder_files" Directory="ProgramFiles64Folder">
+
+		</ComponentGroup>
+	</Fragment>
+</Wix>
