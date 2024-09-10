@@ -20,4 +20,4 @@ MqttTransactPlugin adds a MQTT subscriber source to XProtect's Transact, thus al
 * ...
 
 ## Special Thanks
-To Cascadia Technology for the inspiration given by their  <a href=" https://github.com/cascadia-technology/TxnServerPlugin/" target="_blank">TxnServerPlugin</a>
+To Cascadia Technology for the inspiration given by their  <a href="https://github.com/cascadia-technology/TxnServerPlugin/" target="_blank">TxnServerPlugin</a>
