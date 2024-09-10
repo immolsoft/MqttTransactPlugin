@@ -10,7 +10,7 @@ MqttTransactPlugin adds a MQTT subscriber source to XProtect's Transact, thus al
 * Compatible with MQTT spec v.3.1.1
 * QoS 0
 
-* ## Possible Use Cases where Video evidence can be useful
+## Possible Use Cases where Video evidence can be useful
 * License Plate Recognition
 * ATM Transactions
 * Parcel tracking on a conveyor belt
